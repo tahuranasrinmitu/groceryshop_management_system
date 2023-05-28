@@ -90,68 +90,94 @@
                     <!-- /.row -->
 
                     <!-- Table row -->
-                    <div class="row">
+
+                    <div class="row" style="font-size:medium;margin-top:30px;background-color:#844FC1;">
                         <div class="col-12 table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Serial </th>
-                                        <th>Product</th>
-                                        <th>Qty</th>
-                                        <th>Uom</th>
-                                        <th>Price</th>
-                                        <th>Discount</th>
-                                        <th>Subtotal</th>
-                                        <th>
-                                            <input value="Clear" type="button" name="" id="Clear">
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <select name="product_id" id="productId">
-                                                @foreach ($products as $product)
-                                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-
-                                        <td>
-                                            <input type="text" id="qty" name="qty">
-                                        </td>
-
-
-
-                                        <td>
-                                            <select name="uom_id" id="uomId">
-                                                @foreach ($uoms as $uom)
-                                                    <option value="{{ $uom->id }}">{{ $uom->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="text" id="price" name="price">
-
-                                        </td>
-                                        <td>
-                                            <input type="text" name="discount" id="discount">
-                                        </td>
-                                        <td>
-                                            <input type="text" name="subtotal" id="subtotal">
-                                        </td>
-                                        <td>
-                                            <input type="button" value="+" name="" id="addtocart">
-                                        </td>
-                                    </tr>
-
-                                </thead>
-                                <tbody id="items">
-
-                                </tbody>
-                            </table>
+                          <table class="table table-striped" style="color:gray">
+                            <thead>
+                              <tr style="color:aliceblue">
+                                <th>SN</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Measure</th>
+                                <th>Uom</th>
+                                <th>Discount</th>
+                                <th>Subtotal</th>
+        
+        
+        
+                                <th><input type="button" id="clearAll" value="Clear" /></th>
+                              </tr>
+                              <tr>
+                                <th></th>
+                                <th>
+                                  <select id="cmbProduct" name="product_id" style="width: 100px;">
+                                    @foreach($products as $product)
+                                    <option value="{{$product->id}}">{{$product->name}}</option>
+                                    @endforeach
+                                  </select>
+                                </th>
+        
+                                <th>
+                                  <input type="text" id="txtPrice" style="width: 90px;" />
+                                </th>
+                                <th>
+                                  <input type="text" id="txtMesure" style="width: 90px;" />
+                                </th>
+                                <th>
+                                  <input type="text" id="txtUom" style="width: 90px;" />
+                                </th>
+                                <th><input type="text" id="txtDiscount" style="width: 90px;" /></th>
+                                <th></th>
+                                <th><input type="button" id="btnAddToCart" value=" + " /></th>
+                              </tr>
+                            </thead>
+                            <tbody id="items">
+        
+                            </tbody>
+                          </table>
                         </div>
                         <!-- /.col -->
-                    </div>
+                      </div>
+                      <!-- /.row -->
+        
+                      <div class="row" style="margin-top: 30px;font-size:medium">
+                        <!-- accepted payments column -->
+                        <div class="col-6">
+                          <strong>Remark</strong><br>
+                          <textarea id="txtRemark" style="width: 150px;height:50px"></textarea>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-6">
+        
+        
+                          <div class="table-responsive">
+                            <table class="table">
+                              <tbody>
+                                <tr>
+                                  <th style="width:50%">Subtotal:</th>
+                                  <td id="subtotal">0</td>
+                                </tr>
+                                <tr>
+                                  <th>Tax (5%)</th>
+                                  <td id="tax">0</td>
+                                </tr>
+        
+                                <tr>
+                                  <th>Total:</th>
+                                  <td id="net-total">0</td>
+                                </tr>
+                                <tr>
+                                  <th>Paid Amount</th>
+                                  <td><input type="text" id="Paid" style="width: 150px;" /></td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /.col -->
+                      </div>
                     <!-- /.row -->
 
                     <div class="row">
@@ -326,7 +352,7 @@
                 });
 
             })
-            $("#addtocart").on("click", function() {
+            $("#btnaddtocart").on("click", function() {
                 AddtoCart();
             });
 

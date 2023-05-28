@@ -34,7 +34,7 @@ class PurchaseController extends Controller{
 	public function store(Request $request){
 		//Purchase::create($request->all());
 		$purchase = new Purchase;
-		$purchase->name=$request->name;
+		$purchase->product_id=$request->product_id;
 		$purchase->supplier_id=$request->supplier_id;
 		$purchase->purchase_date=date('Y-M-D',($request->purchase_date));
 		$purchase->delivery_date=date('Y-M-D',($request->delivery_date));

@@ -8,7 +8,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StockController;
 
-use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UomController;
 use App\Http\Controllers\UserController;
@@ -31,7 +31,7 @@ Route::get('/', function () {
 });
 Route::get('dashboard',[HomeController::class,'home']);
 Route::resource('/users',UserController::class);
-Route::resource('/sales',SalesController::class);
+Route::resource('/sales',SaleController::class);
 Route::resource('/purchases',PurchaseController::class);
 Route::resource('/manufacturers',ManufacturerController::class);
 Route::resource('/suppliers',SupplierController::class);
